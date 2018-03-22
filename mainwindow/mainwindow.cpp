@@ -138,35 +138,6 @@ void MainWindow::toLessenActionTriggered(void)
     loadImageResource();
 }
 
-void MainWindow::deleteActionTriggered(void)
-{
-    if (!QFile(imageViewer->filename).exists()) {
-        QMessageBox::information(this,
-                                 tr("Error"),
-                                 tr("Open a image, please!"));
-        return ;
-    }
-
-    QMessageBox message(QMessageBox::Warning,
-                        tr("Warning"),
-                        tr("Do you want to delete this image?"),
-                        QMessageBox::Yes|QMessageBox::No,
-                        NULL);
-    if (message.exec() == QMessageBox::No) {
-        return ;
-    }
-
-    int ret = imageViewer->delImageFile();
-    if (ret) {
-        QMessageBox::warning(this,
-                             tr("Error"),
-                             tr("Delete a image failed!"));
-        return ;
-    }
-
-    initImageResource();
-}
-
 void MainWindow::setQImageViewerWidget(void)
 {
     /* label show image */
@@ -218,11 +189,6 @@ void MainWindow::setWindowComponet(void)
     toLessenAction->setStatusTip(tr("To Lessen."));
     toLessenAction->setIcon(QIcon(":/images/small.png"));
 
-    deleteAction = new QAction(tr("Delete"), this);
-    deleteAction->setStatusTip(tr("Delete a image"));
-    deleteAction->setIcon(QIcon(":/images/clear.png"));
-    deleteAction->setShortcut(QKeySequence::Delete);
-
     QAction *exitAction = new QAction(tr("Exit"), this);
     exitAction->setStatusTip(tr("Exit"));
     exitAction->setIcon(QIcon(":/images/quit.png"));
@@ -240,7 +206,6 @@ void MainWindow::setWindowComponet(void)
     fileMenu->addAction(openAction);
     fileMenu->addAction(closeAction);
     fileMenu->addSeparator();
-    fileMenu->addAction(deleteAction);
     fileMenu->addSeparator();
     fileMenu->addAction(exitAction);
 
@@ -266,7 +231,6 @@ void MainWindow::setWindowComponet(void)
     toolBar->addAction(toRightAction);
     toolBar->addAction(toEnlargeAction);
     toolBar->addAction(toLessenAction);
-    toolBar->addAction(deleteAction);
     toolBar->addAction(about);
 
     connect(openAction, SIGNAL(triggered(bool)), this, SLOT(openActionTriggered()));
@@ -277,7 +241,6 @@ void MainWindow::setWindowComponet(void)
     connect(toRightAction, SIGNAL(triggered(bool)), this, SLOT(toRightActionTriggered()));
     connect(toEnlargeAction, SIGNAL(triggered(bool)), this, SLOT(toEnlargeActionTriggered()));
     connect(toLessenAction, SIGNAL(triggered(bool)), this, SLOT(toLessenActionTriggered()));
-    connect(deleteAction, SIGNAL(triggered(bool)), this, SLOT(deleteActionTriggered()));
 
     connect(about, SIGNAL(triggered(bool)), this, SLOT(aboutTriggered()));
     connect(aboutQt, SIGNAL(triggered(bool)), this, SLOT(aboutQtTriggered()));

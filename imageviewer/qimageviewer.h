@@ -37,9 +37,6 @@ public:
     /* close file */
     int closeImageFile(void);
 
-    /* delete file */
-    int delImageFile(void);
-
     /* file skipping */
     int last(void);
     int next(void);

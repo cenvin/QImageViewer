@@ -40,24 +40,6 @@ int QImageViewer::closeImageFile(void)
     return 0;
 }
 
-int QImageViewer::delImageFile(void)
-{
-    if (filename.isEmpty()) {
-        return -1;
-    }
-
-    if (QFile::remove(filename)) {
-        qDebug() << "remove success: " << filename;
-    } else {
-        qDebug() << "remove failed: " << filename;
-        return -1;
-    }
-
-    /* delete from list */
-    fileInfoList.removeAt(index);
-
-    return 0;
-}
 
 int QImageViewer::last(void)
 {

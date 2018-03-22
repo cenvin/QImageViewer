@@ -44,7 +44,6 @@ private:
     QAction *toRightAction;
     QAction *toEnlargeAction;
     QAction *toLessenAction;
-    QAction *deleteAction;
 
 public slots:
     void openActionTriggered(void);
@@ -55,7 +54,6 @@ public slots:
     void toRightActionTriggered(void);
     void toEnlargeActionTriggered(void);
     void toLessenActionTriggered(void);
-    void deleteActionTriggered(void);
     void aboutTriggered(void);
     void aboutQtTriggered(void);
 };
