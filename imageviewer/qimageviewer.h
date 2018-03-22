@@ -34,12 +34,8 @@ public:
     /* open a file */
     int openImageFile(const QString &caption,const QString &dir,const QString &filer);
 
-    /* close file */
-    int closeImageFile(void);
-
-    /* file skipping */
-    int last(void);
-    int next(void);
+    /* save file */
+    int saveImageFile(void);
 
     /* change image */
     int zoomIn(void);

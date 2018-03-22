@@ -37,9 +37,7 @@ private:
     void loadImageResource(void);
 
     QAction *openAction;
-    QAction *closeAction;
-    QAction *lastAction;
-    QAction *nextAction;
+    QAction *saveAction;
     QAction *toLeftAction;
     QAction *toRightAction;
     QAction *toEnlargeAction;
@@ -47,9 +45,7 @@ private:
 
 public slots:
     void openActionTriggered(void);
-    void closeActionTriggered(void);
-    void lastActionTriggered(void);
-    void nextActionTriggered(void);
+    void saveActionTriggered(void);
     void toLeftActionTriggered(void);
     void toRightActionTriggered(void);
     void toEnlargeActionTriggered(void);

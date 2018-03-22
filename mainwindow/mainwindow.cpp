@@ -54,36 +54,10 @@ void MainWindow::openActionTriggered(void)
     loadImageResource();
 }
 
-void MainWindow::closeActionTriggered(void)
+void MainWindow::saveActionTriggered(void)
 {
     initImageResource();
-    imageViewer->closeImageFile();
-}
-
-void MainWindow::lastActionTriggered(void)
-{
-    int ret = imageViewer->last();
-    if (ret) {
-        QMessageBox::information(this,
-                                 tr("Error"),
-                                 tr("Open a image, please!"));
-        return ;
-    }
-
-    loadImageResource();
-}
-
-void MainWindow::nextActionTriggered(void)
-{
-    int ret = imageViewer->next();
-    if (ret) {
-        QMessageBox::information(this,
-                                 tr("Error"),
-                                 tr("Open a image, please!"));
-        return ;
-    }
-
-    loadImageResource();
+    imageViewer->saveImageFile();
 }
 
 void MainWindow::toLeftActionTriggered(void)
@@ -160,18 +134,10 @@ void MainWindow::setWindowComponet(void)
     openAction->setStatusTip(tr("Open a image."));
     openAction->setIcon(QIcon(":/images/open.png"));
 
-    closeAction = new QAction(tr("Close"), this);
-    closeAction->setShortcut(QKeySequence::Close);
-    closeAction->setStatusTip(tr("Close a image."));
-    closeAction->setIcon(QIcon(":/images/close.png"));
-
-    lastAction = new QAction(tr("Last"), this);
-    lastAction->setStatusTip(tr("Last image."));
-    lastAction->setIcon(QIcon(":/images/left.png"));
-
-    nextAction = new QAction(tr("Next"), this);
-    nextAction->setStatusTip(tr("Next image"));
-    nextAction->setIcon(QIcon(":/images/right.png"));
+    saveAction = new QAction(tr("Save"), this);
+    saveAction->setShortcut(QKeySequence::Save);
+    saveAction->setStatusTip(tr("save a image."));
+    saveAction->setIcon(QIcon(":/images/save.png"));
 
     toLeftAction = new QAction(tr("LeftSpin"), this);
     toLeftAction->setStatusTip(tr("To Left."));
@@ -204,15 +170,12 @@ void MainWindow::setWindowComponet(void)
 
     QMenu *fileMenu = menuBar->addMenu(tr("File"));
     fileMenu->addAction(openAction);
-    fileMenu->addAction(closeAction);
+    fileMenu->addAction(saveAction);
     fileMenu->addSeparator();
     fileMenu->addSeparator();
     fileMenu->addAction(exitAction);
 
     QMenu *operationMenu = menuBar->addMenu(tr("Operate"));
-    operationMenu->addAction(lastAction);
-    operationMenu->addAction(nextAction);
-    operationMenu->addSeparator();
     operationMenu->addAction(toLeftAction);
     operationMenu->addAction(toRightAction);
     operationMenu->addSeparator();
@@ -224,9 +187,7 @@ void MainWindow::setWindowComponet(void)
     helpMenu->addAction(about);
 
     toolBar->addAction(openAction);
-    toolBar->addAction(closeAction);
-    toolBar->addAction(lastAction);
-    toolBar->addAction(nextAction);
+    toolBar->addAction(saveAction);
     toolBar->addAction(toLeftAction);
     toolBar->addAction(toRightAction);
     toolBar->addAction(toEnlargeAction);
@@ -234,9 +195,7 @@ void MainWindow::setWindowComponet(void)
     toolBar->addAction(about);
 
     connect(openAction, SIGNAL(triggered(bool)), this, SLOT(openActionTriggered()));
-    connect(closeAction, SIGNAL(triggered(bool)), this, SLOT(closeActionTriggered()));
-    connect(lastAction, SIGNAL(triggered(bool)), this, SLOT(lastActionTriggered()));
-    connect(nextAction, SIGNAL(triggered(bool)), this, SLOT(nextActionTriggered()));
+    connect(saveAction, SIGNAL(triggered(bool)), this, SLOT(saveActionTriggered()));
     connect(toLeftAction, SIGNAL(triggered(bool)), this, SLOT(toLeftActionTriggered()));
     connect(toRightAction, SIGNAL(triggered(bool)), this, SLOT(toRightActionTriggered()));
     connect(toEnlargeAction, SIGNAL(triggered(bool)), this, SLOT(toEnlargeActionTriggered()));
@@ -244,7 +203,7 @@ void MainWindow::setWindowComponet(void)
 
     connect(about, SIGNAL(triggered(bool)), this, SLOT(aboutTriggered()));
     connect(aboutQt, SIGNAL(triggered(bool)), this, SLOT(aboutQtTriggered()));
-    connect(exitAction, SIGNAL(triggered(bool)), this, SLOT(close()));
+    connect(exitAction, SIGNAL(triggered(bool)), this, SLOT(save()));
 }
 
 void MainWindow::aboutQtTriggered(void)
