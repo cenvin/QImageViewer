@@ -156,16 +156,9 @@ int QImageViewer::upgradeFileInfo(QString &filename,int angle,int sizeScale)
     }
 
     /* modify scale */
-    if(sizeScale==10)
-    {
-        imgScaled = imgRotate.scaled(size.height() ,
-                                     size.width() ,
-                                     Qt::KeepAspectRatio);
-    }else{
-        imgScaled = imgRotate.scaled(size.width() * sizeScale / 10,
-                                     size.height() * sizeScale / 10,
-                                     Qt::KeepAspectRatio);
-    }
+    imgScaled = imgRotate.scaled(size.width() * sizeScale / 10,
+                                 size.height() * sizeScale / 10,
+                                 Qt::KeepAspectRatio);
 
     /* upgrade pixmap */
     pixmap = QPixmap::fromImage(imgScaled);
