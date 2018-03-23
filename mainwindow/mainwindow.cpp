@@ -44,8 +44,8 @@ void MainWindow::loadImageResource(void)
 void MainWindow::openActionTriggered(void)
 {
     int ret = imageViewer->openImageFile(tr("Select image:"),
-                                         "D:\\Documents",
-                                         tr("Documents (*.txt)"));
+                                         "D:\\Documents\\Pictures",
+                                         tr("Images (*.jpg *.jpeg *.png *.bmp *.gif)"));
     if (ret) {
         QMessageBox::information(this, tr("Error"), tr("Open a file failed!"));
         return ;
@@ -203,6 +203,7 @@ void MainWindow::setWindowComponet(void)
 
     connect(about, SIGNAL(triggered(bool)), this, SLOT(aboutTriggered()));
     connect(aboutQt, SIGNAL(triggered(bool)), this, SLOT(aboutQtTriggered()));
+    connect(exitAction, SIGNAL(triggered(bool)), this, SLOT(save()));
 }
 
 void MainWindow::aboutQtTriggered(void)
