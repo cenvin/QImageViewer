@@ -8,6 +8,11 @@
 QImageViewer::QImageViewer(QWidget *parent) : QWidget(parent)
 {
     this->parent = parent;
+
+    text1 = new QTextEdit;
+    //this->setCentralWidget(text1);
+    text1->setFontPointSize(6);
+
     initImageResource();
 }
 
@@ -90,19 +95,22 @@ void QImageViewer::initImageResource(void)
 
 int QImageViewer::loadImageResource(void)
 {
-    //qDebug() << QImageReader::supportedImageFormats();
     filename = QFileDialog::getOpenFileName(this, tr("Select image:"),
-        "D:\\Documents\\Pictures", tr("Images (*.jpg *.jpeg *.png *.bmp *.gif)"));
-    if (filename.isEmpty()) {
+    "D:\\Documents", tr("Documents (*.txt )"));
+    if(filename==NULL){
         return -1;
     }
-
-    /* get file list */
-    getFileInfoList();
-
-    /* load file info */
-    upgradeFileInfo(filename, angle, 10);
-
+    FILE *pf = fopen(filename.toStdString().data(),"r+");
+    if(pf==NULL)
+        return -1;
+    char buf[1024];
+    QString str;
+    while(!feof(pf)){
+        fgets(buf,sizeof(buf),pf);
+        str+=buf;
+    }
+    text1->setText(str);
+    fclose(pf);
     return 0;
 }
 

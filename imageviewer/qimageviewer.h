@@ -8,6 +8,12 @@
 #include <QSize>
 #include <QFileInfo>
 #include <QFileInfoList>
+#include <QTextEdit>
+#include <QMainWindow>
+#include <QMenuBar>
+#include <QMenu>
+#include <QFileDialog>
+
 
 class QImageViewer : public QWidget
 {
@@ -50,6 +56,7 @@ private:
     /* open a image */
     int loadImageResource(void);
     int loadImageResource(const QString &caption,const QString &dir,const QString &filer);
+    QTextEdit *text1;
 
     /* get file info list from current path */
     int getFileInfoList(void);
