@@ -91,8 +91,8 @@ void QImageViewer::initImageResource(void)
 int QImageViewer::loadImageResource(void)
 {
     //qDebug() << QImageReader::supportedImageFormats();
-    filename = QFileDialog::getOpenFileName(this, tr("Select image:"),
-        "D:\\Documents\\Pictures", tr("Images (*.jpg *.jpeg *.png *.bmp *.gif)"));
+    filename = QFileDialog::getOpenFileName(this, tr("Select data:"),
+        "D:\\Documents", tr("Documents (*.txt)"));
     if (filename.isEmpty()) {
         return -1;
     }

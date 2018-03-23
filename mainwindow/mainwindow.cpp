@@ -43,9 +43,9 @@ void MainWindow::loadImageResource(void)
 
 void MainWindow::openActionTriggered(void)
 {
-    int ret = imageViewer->openImageFile(tr("Select image:"),
-                                         "D:\\Documents\\Pictures",
-                                         tr("Images (*.jpg *.jpeg *.png *.bmp *.gif)"));
+    int ret = imageViewer->openImageFile(tr("Select data:"),
+                                         "D:\\Documents",
+                                         tr("Documents (*.txt)"));
     if (ret) {
         QMessageBox::information(this, tr("Error"), tr("Open a file failed!"));
         return ;
