@@ -4,10 +4,11 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QRadioButton>
+#include <QButtonGroup>
 #include <QLabel>
 #include <QTextEdit>
 
-#define SSETTING_WIDGET_WIDTH     320
+#define SSETTING_WIDGET_WIDTH     340
 #define SSETTING_WIDGET_HEIGHT    200
 
 class S_setting : public QWidget
@@ -20,10 +21,12 @@ public:
 private:
     QPushButton *sendBtn;
 
+    QButtonGroup *spedGroup;
     QRadioButton *sped0;
     QRadioButton *sped1;
     QRadioButton *sped2;
 
+    QButtonGroup *gapGroup;
     QRadioButton *gap0;
     QRadioButton *gap1;
     QRadioButton *gap2;
