@@ -36,6 +36,7 @@ void MainWindow::initImageResource(void)
 
 void MainWindow::loadImageResource(void)
 {
+    //recover here, how to show a grey pic
     imageLabel->setPixmap(imageViewer->pixmap);
     imageLabel->resize(imageViewer->size);
     setWindowTitle(QFileInfo(imageViewer->filename).fileName() + tr(" - RadarViewer"));
@@ -169,8 +170,8 @@ void MainWindow::setWindowComponet(void)
     about->setIcon(QIcon(":/images/help.png"));
 
     QAction *scanSetting = new QAction(tr("Scan Setting"), this);
-    about->setStatusTip(tr("Scan Setting"));
-    about->setIcon(QIcon(":/images/setting.png"));
+    scanSetting->setStatusTip(tr("Scan Setting"));
+    scanSetting->setIcon(QIcon(":/images/setting.png"));
 
     QMenu *fileMenu = menuBar->addMenu(tr("File"));
     fileMenu->addAction(openAction);
@@ -196,10 +197,10 @@ void MainWindow::setWindowComponet(void)
 
     connect(openAction, SIGNAL(triggered(bool)), this, SLOT(openActionTriggered()));
     connect(saveAction, SIGNAL(triggered(bool)), this, SLOT(saveActionTriggered()));
-//    connect(toLeftAction, SIGNAL(triggered(bool)), this, SLOT(toLeftActionTriggered()));
-//    connect(toRightAction, SIGNAL(triggered(bool)), this, SLOT(toRightActionTriggered()));
-//    connect(toEnlargeAction, SIGNAL(triggered(bool)), this, SLOT(toEnlargeActionTriggered()));
-//    connect(toLessenAction, SIGNAL(triggered(bool)), this, SLOT(toLessenActionTriggered()));
+    connect(toLeftAction, SIGNAL(triggered(bool)), this, SLOT(toLeftActionTriggered()));
+    connect(toRightAction, SIGNAL(triggered(bool)), this, SLOT(toRightActionTriggered()));
+    connect(toEnlargeAction, SIGNAL(triggered(bool)), this, SLOT(toEnlargeActionTriggered()));
+    connect(toLessenAction, SIGNAL(triggered(bool)), this, SLOT(toLessenActionTriggered()));
 
     connect(about, SIGNAL(triggered(bool)), this, SLOT(aboutTriggered()));
     connect(aboutQt, SIGNAL(triggered(bool)), this, SLOT(aboutQtTriggered()));

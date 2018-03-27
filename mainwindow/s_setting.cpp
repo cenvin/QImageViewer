@@ -67,9 +67,24 @@ void S_setting::scanUiComponent(void)
 
     setLayout(mainLayout);
 
+
+    connect(spedGroup, SIGNAL(buttonClicked(int)), this, SLOT(spedButtonsClicked(int)));
+    connect(gapGroup, SIGNAL(buttonClicked(int)), this, SLOT(gapButtonsClicked(int)));
+
     sendBtn = new QPushButton(this);
     sendBtn->setText(tr("Scan"));
     sendBtn->setGeometry(SSETTING_WIDGET_WIDTH-60, SSETTING_WIDGET_HEIGHT-40, 40, 20);
     connect(sendBtn, SIGNAL(clicked(bool)), this, SLOT(sendBtnClicked()));
 }
 
+void S_setting::spedButtonsClicked(int id)
+{
+    qDebug("Clicked_spd: %d", id);
+
+}
+
+void S_setting::gapButtonsClicked(int id)
+{
+    qDebug("Clicked_gap: %d", id);
+
+}

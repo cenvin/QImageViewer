@@ -43,5 +43,7 @@ private:
 
 public slots:
     void sendBtnClicked(void);
+    void spedButtonsClicked(int);
+    void gapButtonsClicked(int);
 };
 #endif // S_SETTING_H
