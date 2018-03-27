@@ -11,6 +11,7 @@
 
 #include "qabout.h"
 #include "qimageviewer.h"
+#include "s_setting.h"
 
 class MainWindow : public QMainWindow
 {
@@ -26,6 +27,8 @@ private:
     QLabel *imageLabel;
     QAbout aboutWidget;
 
+    S_setting setWidget;
+
     /* new class */
     QImageViewer *imageViewer;
 
@@ -38,21 +41,24 @@ private:
 
     QAction *openAction;
     QAction *saveAction;
-    QAction *toLeftAction;
-    QAction *toRightAction;
     QAction *toEnlargeAction;
     QAction *toLessenAction;
+    QAction *toLeftAction;
+    QAction *toRightAction;
+
     QAction *scanSetting;
 
 public slots:
     void openActionTriggered(void);
     void saveActionTriggered(void);
+    void toEnlargeActionTriggered(void);
     void toLeftActionTriggered(void);
     void toRightActionTriggered(void);
-    void toEnlargeActionTriggered(void);
+
     void toLessenActionTriggered(void);
     void aboutTriggered(void);
     void aboutQtTriggered(void);
+
     void scanSettingTriggred(void);
 
 };

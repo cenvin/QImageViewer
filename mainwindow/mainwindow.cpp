@@ -38,7 +38,7 @@ void MainWindow::loadImageResource(void)
 {
     imageLabel->setPixmap(imageViewer->pixmap);
     imageLabel->resize(imageViewer->size);
-    setWindowTitle(QFileInfo(imageViewer->filename).fileName() + tr(" - QImageViewer"));
+    setWindowTitle(QFileInfo(imageViewer->filename).fileName() + tr(" - RadarViewer"));
 }
 
 void MainWindow::openActionTriggered(void)
@@ -182,7 +182,6 @@ void MainWindow::setWindowComponet(void)
     QMenu *operationMenu = menuBar->addMenu(tr("Scan"));
     operationMenu->addAction(scanSetting);
 
-
     QMenu *helpMenu = menuBar->addMenu(tr("Help"));
     helpMenu->addAction(aboutQt);
     helpMenu->addAction(about);
@@ -225,11 +224,11 @@ void MainWindow::aboutTriggered(void)
 
 void MainWindow::scanSettingTriggred(void)
 {
-    aboutWidget.setWindowTitle("Scan Setting");
-    aboutWidget.setWindowIcon(QIcon(":/images/setting.png"));
-    aboutWidget.setFixedSize(QABOUT_WIDGET_WIDTH, QABOUT_WIDGET_HEIGHT);
+    setWidget.setWindowTitle("Scan Setting");
+    setWidget.setWindowIcon(QIcon(":/images/setting.png"));
+    setWidget.setFixedSize(SSETTING_WIDGET_WIDTH, SSETTING_WIDGET_HEIGHT);
 
-    aboutWidget.show();
+    setWidget.show();
 }
 
 void MainWindow::initUiComponent(void)
