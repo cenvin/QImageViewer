@@ -36,14 +36,14 @@ void QAbout::initUiComponent(void)
     int btn_y = QABOUT_WIDGET_HEIGHT - btn_h;
 
     titleLabel = new QLabel(this);
-    titleLabel->setText(tr("QImageViewer for Windows(Version v0.2.1)"));
+    titleLabel->setText(tr("RadarViewer for Windows(Version v1.0)"));
     titleLabel->setGeometry(20, 10, label_w, label_h);
 
     QFont titleFont("Microsoft YaHei", 10, QFont::Bold);
     titleLabel->setFont(titleFont);
 
     authorLabel = new QLabel(this);
-    authorLabel->setText(tr("Author: gitorup"));
+    authorLabel->setText(tr("Author: Calvin"));
     authorLabel->setGeometry(100, 30, label_w, label_h);
 
     infoLabel = new QLabel(this);
@@ -54,7 +54,7 @@ void QAbout::initUiComponent(void)
 
     QString info;
     info.append("                                     Statement\n");
-    info.append("QImageViewer is a free and open source project. ");
+    info.append("RadarViewer is a free and open source project. ");
     info.append("You can according to the published by the free software "
                 "foundation GNU free distribution and/or modify it under the GPL; "
                 "Using version 3 of the agreement, or any higher versions (according to your choice). "

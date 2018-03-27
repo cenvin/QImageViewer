@@ -31,7 +31,7 @@ void MainWindow::initImageResource(void)
 {
     imageLabel->clear();
     imageLabel->resize(QSize(200, 100));
-    setWindowTitle(tr("QImageViewer"));
+    setWindowTitle(tr("RadarViewer"));
 }
 
 void MainWindow::loadImageResource(void)
@@ -45,7 +45,7 @@ void MainWindow::openActionTriggered(void)
 {
     int ret = imageViewer->openImageFile(tr("Select data:"),
                                          "D:\\Documents",
-                                         tr("Documents (*.txt)"));
+                                         tr("Data (*.csv)"));
     if (ret) {
         QMessageBox::information(this, tr("Error"), tr("Open a file failed!"));
         return ;
@@ -66,7 +66,7 @@ void MainWindow::toLeftActionTriggered(void)
     if (ret) {
         QMessageBox::information(this,
                                  tr("Error"),
-                                 tr("Open a image, please!"));
+                                 tr("Open correct data, please!"));
         return ;
     }
 
@@ -79,7 +79,7 @@ void MainWindow::toRightActionTriggered(void)
     if (ret) {
         QMessageBox::information(this,
                                  tr("Error"),
-                                 tr("Open a image, please!"));
+                                 tr("Open correct data, please!"));
         return ;
     }
 
@@ -92,7 +92,7 @@ void MainWindow::toEnlargeActionTriggered(void)
     if (ret) {
         QMessageBox::information(this,
                                  tr("Error"),
-                                 tr("Open a image, please!"));
+                                 tr("Open correct data, please!"));
         return ;
     }
 
@@ -105,7 +105,7 @@ void MainWindow::toLessenActionTriggered(void)
     if (ret) {
         QMessageBox::information(this,
                                  tr("Error"),
-                                 tr("Open a image, please!"));
+                                 tr("Open correct data, please!"));
         return ;
     }
 
@@ -131,12 +131,12 @@ void MainWindow::setWindowComponet(void)
 {
     openAction = new QAction(tr("Open"), this);
     openAction->setShortcut(QKeySequence::Open);
-    openAction->setStatusTip(tr("Open a image."));
+    openAction->setStatusTip(tr("Open data."));
     openAction->setIcon(QIcon(":/images/open.png"));
 
     saveAction = new QAction(tr("Save"), this);
     saveAction->setShortcut(QKeySequence::Save);
-    saveAction->setStatusTip(tr("save a image."));
+    saveAction->setStatusTip(tr("Save image."));
     saveAction->setIcon(QIcon(":/images/save.png"));
 
     toLeftAction = new QAction(tr("LeftSpin"), this);
@@ -164,9 +164,13 @@ void MainWindow::setWindowComponet(void)
     aboutQt->setStatusTip(tr("About Qt"));
     aboutQt->setIcon(QIcon(":/images/Qt.png"));
 
-    QAction *about = new QAction(tr("About QImageViewer"), this);
-    about->setStatusTip(tr("About QImageViewer"));
+    QAction *about = new QAction(tr("About RadarViewer"), this);
+    about->setStatusTip(tr("About RadarViewer"));
     about->setIcon(QIcon(":/images/help.png"));
+
+    QAction *scanSetting = new QAction(tr("Scan Setting"), this);
+    about->setStatusTip(tr("Scan Setting"));
+    about->setIcon(QIcon(":/images/setting.png"));
 
     QMenu *fileMenu = menuBar->addMenu(tr("File"));
     fileMenu->addAction(openAction);
@@ -175,12 +179,9 @@ void MainWindow::setWindowComponet(void)
     fileMenu->addSeparator();
     fileMenu->addAction(exitAction);
 
-    QMenu *operationMenu = menuBar->addMenu(tr("Operate"));
-    operationMenu->addAction(toLeftAction);
-    operationMenu->addAction(toRightAction);
-    operationMenu->addSeparator();
-    operationMenu->addAction(toEnlargeAction);
-    operationMenu->addAction(toLessenAction);
+    QMenu *operationMenu = menuBar->addMenu(tr("Scan"));
+    operationMenu->addAction(scanSetting);
+
 
     QMenu *helpMenu = menuBar->addMenu(tr("Help"));
     helpMenu->addAction(aboutQt);
@@ -196,14 +197,16 @@ void MainWindow::setWindowComponet(void)
 
     connect(openAction, SIGNAL(triggered(bool)), this, SLOT(openActionTriggered()));
     connect(saveAction, SIGNAL(triggered(bool)), this, SLOT(saveActionTriggered()));
-    connect(toLeftAction, SIGNAL(triggered(bool)), this, SLOT(toLeftActionTriggered()));
-    connect(toRightAction, SIGNAL(triggered(bool)), this, SLOT(toRightActionTriggered()));
-    connect(toEnlargeAction, SIGNAL(triggered(bool)), this, SLOT(toEnlargeActionTriggered()));
-    connect(toLessenAction, SIGNAL(triggered(bool)), this, SLOT(toLessenActionTriggered()));
+//    connect(toLeftAction, SIGNAL(triggered(bool)), this, SLOT(toLeftActionTriggered()));
+//    connect(toRightAction, SIGNAL(triggered(bool)), this, SLOT(toRightActionTriggered()));
+//    connect(toEnlargeAction, SIGNAL(triggered(bool)), this, SLOT(toEnlargeActionTriggered()));
+//    connect(toLessenAction, SIGNAL(triggered(bool)), this, SLOT(toLessenActionTriggered()));
 
     connect(about, SIGNAL(triggered(bool)), this, SLOT(aboutTriggered()));
     connect(aboutQt, SIGNAL(triggered(bool)), this, SLOT(aboutQtTriggered()));
-    connect(exitAction, SIGNAL(triggered(bool)), this, SLOT(save()));
+    connect(exitAction, SIGNAL(triggered(bool)), this, SLOT(close()));
+    connect(scanSetting, SIGNAL(triggered(bool)), this, SLOT(scanSettingTriggred()));
+
 }
 
 void MainWindow::aboutQtTriggered(void)
@@ -215,6 +218,15 @@ void MainWindow::aboutTriggered(void)
 {
     aboutWidget.setWindowTitle("Help Infomation");
     aboutWidget.setWindowIcon(QIcon(":/images/help.png"));
+    aboutWidget.setFixedSize(QABOUT_WIDGET_WIDTH, QABOUT_WIDGET_HEIGHT);
+
+    aboutWidget.show();
+}
+
+void MainWindow::scanSettingTriggred(void)
+{
+    aboutWidget.setWindowTitle("Scan Setting");
+    aboutWidget.setWindowIcon(QIcon(":/images/setting.png"));
     aboutWidget.setFixedSize(QABOUT_WIDGET_WIDTH, QABOUT_WIDGET_HEIGHT);
 
     aboutWidget.show();

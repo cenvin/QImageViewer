@@ -92,7 +92,7 @@ int QImageViewer::loadImageResource(void)
 {
     //qDebug() << QImageReader::supportedImageFormats();
     filename = QFileDialog::getOpenFileName(this, tr("Select data:"),
-        "D:\\Documents", tr("Documents (*.txt)"));
+        "D:\\Documents", tr("Data (*.csv)"));
     if (filename.isEmpty()) {
         return -1;
     }

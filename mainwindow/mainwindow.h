@@ -42,6 +42,7 @@ private:
     QAction *toRightAction;
     QAction *toEnlargeAction;
     QAction *toLessenAction;
+    QAction *scanSetting;
 
 public slots:
     void openActionTriggered(void);
@@ -52,6 +53,8 @@ public slots:
     void toLessenActionTriggered(void);
     void aboutTriggered(void);
     void aboutQtTriggered(void);
+    void scanSettingTriggred(void);
+
 };
 
 #endif // MAINWINDOW_H
