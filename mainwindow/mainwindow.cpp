@@ -11,6 +11,7 @@
 #include <QGridLayout>
 #include <QErrorMessage>
 #include <QApplication>
+#include <QVector>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
@@ -30,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 void MainWindow::initImageResource(void)
 {
     imageLabel->clear();
-    imageLabel->resize(QSize(200, 100));
+    imageLabel->resize(QSize(255, 255));
     setWindowTitle(tr("RadarViewer"));
 }
 
@@ -40,6 +41,8 @@ void MainWindow::loadImageResource(void)
     imageLabel->setPixmap(imageViewer->pixmap);
     imageLabel->resize(imageViewer->size);
     setWindowTitle(QFileInfo(imageViewer->filename).fileName() + tr(" - RadarViewer"));
+//    imageLabel->setPixmap(mp.fromImage(desImage));
+
 }
 
 void MainWindow::openActionTriggered(void)

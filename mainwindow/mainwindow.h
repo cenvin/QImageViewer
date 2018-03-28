@@ -8,6 +8,8 @@
 #include <QStatusBar>
 #include <QLabel>
 #include <QFileInfoList>
+#include <QImage>
+#include <QPixmap>
 
 #include "qabout.h"
 #include "qimageviewer.h"
@@ -26,8 +28,9 @@ private:
     QStatusBar *statusBar;
     QLabel *imageLabel;
     QAbout aboutWidget;
-
     S_setting setWidget;
+
+    QPixmap mp;
 
     /* new class */
     QImageViewer *imageViewer;

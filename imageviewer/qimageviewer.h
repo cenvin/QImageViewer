@@ -7,7 +7,6 @@
 #include <QDir>
 #include <QSize>
 #include <QFileInfo>
-#include <QFileInfoList>
 
 class QImageViewer : public QWidget
 {
@@ -25,7 +24,8 @@ public:
     QString path;
     QDir dir;
     QFileInfo fileInfo;
-    QFileInfoList fileInfoList;
+
+    QImage desImage;
 
     QImage image;
     QPixmap pixmap;
@@ -50,8 +50,6 @@ private:
     int loadImageResource(void);
     int loadImageResource(const QString &caption,const QString &dir,const QString &filer);
 
-    /* get file info list from current path */
-    int getFileInfoList(void);
     int upgradeFileInfo(QString &filename,int angle,int sizeScale);
 
 public slots:

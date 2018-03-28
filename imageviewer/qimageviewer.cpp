@@ -96,9 +96,6 @@ int QImageViewer::loadImageResource(void)
         return -1;
     }
 
-    /* get file list */
-    getFileInfoList();
-
     /* load file info */
     upgradeFileInfo(filename, angle, 10);
 
@@ -114,8 +111,10 @@ int QImageViewer::loadImageResource(const QString &caption,
         return -1;
     }
 
-    /* get file list */
-    getFileInfoList();
+//    QFileDialog *fd = new QFileDialog(this);
+//    QString filename = fd->getOpenFileName(this,caption,directory,filer);//(this,tr("Open File"),"D:\\Documents",tr("Excel(*.csv)"));
+//    if(filename==NULL)
+//        return -1;
 
     /* load file info */
     upgradeFileInfo(filename, angle, 10);
@@ -129,18 +128,63 @@ int QImageViewer::upgradeFileInfo(QString &filename,int angle,int sizeScale)
     QMatrix matrix;
     QImage imgScaled;
 
-    if (filename.isEmpty()) {
-        return -1;
-    }
-
     fileInfo = QFileInfo(filename);
-    if (!image.load(filename)) {
-        return -1;
-    }
 
     /* modify angle */
     matrix.rotate(angle * 90);
-    imgRotate = image.transformed(matrix);
+//    imgRotate = image.transformed(matrix);
+
+    QDir dir = QDir::current();
+    QFile file(dir.filePath(filename));
+    if(!file.open(QIODevice::ReadOnly))
+         qDebug()<<"OPEN FILE FAILED";
+    QTextStream * out = new QTextStream(&file);
+    QStringList tempOption = out->readAll().split("\n");
+
+    int imgHeight = tempOption.count()-1;
+    int imgWidth = tempOption.at(1).split(",").count();
+    QVector <QVector<int>> imgDataNew(512);
+    for (int i = 0 ; i<imgDataNew.size() ; i++)
+        imgDataNew[i].resize(512);
+
+    bool ok;
+
+    for(int i = 0 ; i < tempOption.count()-1 ; i++)
+    {
+         QStringList tempbar = tempOption.at(i).split(",");
+         for(int j = 0 ; j < tempbar.count() ; j++)
+         {
+             imgDataNew[i][j]=tempbar[j].toInt(&ok, 10);
+             //qDebug()<<imgDataNew[i][j]<<i<<","<<j;
+
+         }
+    }
+    file.close();
+    qDebug()<<imgWidth<<","<<imgHeight;
+
+    desImage = QImage(imgWidth,imgHeight,QImage::Format_RGB32); //RGB32
+
+    //RGB
+    int b = 0;
+    int g = 0;
+    int r = 0;
+
+    //pix
+    for (int i=0;i<imgHeight;i++)
+    {
+        for (int j=0;j<imgWidth;j++)
+        {
+            //b = (int)*(imgDataNew+i*imgWidth+j);
+            b = imgDataNew[i][j];
+            g = b;
+            r = g;
+            desImage.setPixel(j,i,qRgb(r,g,b));
+        }
+    }
+
+    image = desImage;
+    imgRotate = desImage.transformed(matrix);
+
 
     if (size == QSize(0, 0)) {
         size = image.size();
@@ -161,31 +205,6 @@ int QImageViewer::upgradeFileInfo(QString &filename,int angle,int sizeScale)
     /* upgrade pixmap */
     pixmap = QPixmap::fromImage(imgScaled);
     size = pixmap.size();
-
-    return 0;
-}
-
-int QImageViewer::getFileInfoList(void)
-{
-    QFileInfo info;
-    QFileInfoList infoList;
-
-    path = QFileInfo(filename).absolutePath();
-    dir = QFileInfo(filename).absoluteDir();
-
-    /* clear list */
-    fileInfoList.clear();
-
-    infoList = dir.entryInfoList(QDir::Files);
-    for (int i = 0; i < infoList.count(); i++) {
-        info = infoList.at(i);
-        QString suffix = info.suffix();
-
-        if (suffix == "jpg" || suffix == "bmp" || suffix == "png"
-            || suffix == "gif" || suffix == "jpeg") {
-            fileInfoList.append(info);
-        }
-    }
 
     return 0;
 }
