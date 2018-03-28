@@ -80,7 +80,6 @@ int QImageViewer::spinToLeft(void)
 
 void QImageViewer::initImageResource(void)
 {
-    index = -1;
     angle = 0;
     size = QSize(0, 0);
 
@@ -163,9 +162,6 @@ int QImageViewer::upgradeFileInfo(QString &filename,int angle,int sizeScale)
     pixmap = QPixmap::fromImage(imgScaled);
     size = pixmap.size();
 
-    /* upgrade index */
-    index = getFileCurIndex();
-
     return 0;
 }
 
@@ -192,32 +188,4 @@ int QImageViewer::getFileInfoList(void)
     }
 
     return 0;
-}
-
-int QImageViewer::getFileCurIndex(void)
-{
-    QFileInfo info;
-    int j;
-
-    if (fileInfoList.count() <= 0) {
-        qDebug() << "fileInfoList is NULL!";
-        return -1;
-    }
-
-    for (j = 0; j < fileInfoList.count(); j++) {
-        info = fileInfoList.at(j);
-        if (info.fileName() == fileInfo.fileName()) {
-            break;
-        }
-    }
-
-    if (j >= fileInfoList.count()) {
-        qDebug() << "Not find current file!";
-        return -1;
-    }
-
-    index = j;
-    //qDebug() << "Current fileInfo index: " << index;
-
-    return index;
 }

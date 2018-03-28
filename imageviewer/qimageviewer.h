@@ -19,7 +19,6 @@ public:
 
     QWidget *parent;
 
-    int index;
     int angle;
     QSize size;
     QString filename;
@@ -53,7 +52,6 @@ private:
 
     /* get file info list from current path */
     int getFileInfoList(void);
-    int getFileCurIndex(void);
     int upgradeFileInfo(QString &filename,int angle,int sizeScale);
 
 public slots:
