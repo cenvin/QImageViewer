@@ -31,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 void MainWindow::initImageResource(void)
 {
     imageLabel->clear();
-    imageLabel->resize(QSize(512, 512));
+    imageLabel->resize(QSize(1024, 1024));
     setWindowTitle(tr("RadarViewer"));
 }
 
@@ -48,7 +48,7 @@ void MainWindow::loadImageResource(void)
 void MainWindow::openActionTriggered(void)
 {
     int ret = imageViewer->openImageFile(tr("Select data:"),
-                                         "D:\\Documents",
+                                         "",
                                          tr("Data (*.csv)"));
     if (ret) {
         QMessageBox::information(this, tr("Error"), tr("Open a file failed!"));
