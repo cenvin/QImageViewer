@@ -36,18 +36,11 @@ int QImageViewer::openImageFile(const QString &caption,
 
 int QImageViewer::saveImageFile(void)
 {
-    initImageResource();
-    return 0;
-    /*
-     *
-     *
-     *
-     * T
-     * B
-     * D
-     *
-     *
-     */
+    //initImageResource();
+    QString filename1 = QFileDialog::getSaveFileName(this, tr("Save Image:"), "", tr("Images(*.png *.jpg)"));
+    image.save(filename1);
+//    qDebug()<<"save:"<<image.size();
+    return upgradeFileInfo(filename, angle, 10);
 }
 
 int QImageViewer::zoomIn(void)
@@ -160,7 +153,6 @@ int QImageViewer::upgradeFileInfo(QString &filename,int angle,int sizeScale)
          }
     }
     file.close();
-    qDebug()<<imgWidth<<","<<imgHeight;
 
     desImage = QImage(imgWidth,imgHeight,QImage::Format_RGB32); //RGB32
 
@@ -184,6 +176,8 @@ int QImageViewer::upgradeFileInfo(QString &filename,int angle,int sizeScale)
 
     image = desImage;
     imgRotate = desImage.transformed(matrix);
+
+    qDebug()<<"upgrad:"<<image.size();
 
 
     if (size == QSize(0, 0)) {

@@ -31,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 void MainWindow::initImageResource(void)
 {
     imageLabel->clear();
-    imageLabel->resize(QSize(255, 255));
+    imageLabel->resize(QSize(512, 512));
     setWindowTitle(tr("RadarViewer"));
 }
 
@@ -60,7 +60,9 @@ void MainWindow::openActionTriggered(void)
 
 void MainWindow::saveActionTriggered(void)
 {
-    initImageResource();
+    //initImageResource();
+    loadImageResource();
+
     imageViewer->saveImageFile();
 }
 
