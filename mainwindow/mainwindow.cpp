@@ -31,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 void MainWindow::initImageResource(void)
 {
     imageLabel->clear();
-    imageLabel->resize(QSize(1024, 1024));
+    imageLabel->resize(QSize(512, 512));
     setWindowTitle(tr("RadarViewer"));
 }
 

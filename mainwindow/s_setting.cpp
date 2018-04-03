@@ -6,9 +6,12 @@
 
 #define SAFE_FREE(p) {if(p != NULL) {delete p; p = NULL;}}
 
+char spdid = 0;
+char gapid = 0;
 S_setting::S_setting(QWidget *parent) : QWidget(parent)
 {
     scanUiComponent();
+
 }
 
 S_setting::~S_setting()
@@ -22,9 +25,18 @@ S_setting::~S_setting()
     SAFE_FREE(sendBtn);
 }
 
+//extern QSerialPort sserial;
+//extern void initSerial(void);
+
 void S_setting::sendBtnClicked(void)
 {
     //TBD
+    serial::initSerial();
+
+    //serial::sserial->write(&spdid);
+    qDebug("speed: %d", spdid);
+    qDebug("gap: %d", gapid);
+
     this->close();
 }
 
@@ -80,11 +92,13 @@ void S_setting::scanUiComponent(void)
 void S_setting::spedButtonsClicked(int id)
 {
     qDebug("Clicked_spd: %d", id);
+    spdid = id;
 
 }
 
 void S_setting::gapButtonsClicked(int id)
 {
     qDebug("Clicked_gap: %d", id);
+    gapid = id;
 
 }

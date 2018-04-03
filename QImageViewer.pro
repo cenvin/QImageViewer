@@ -2,6 +2,7 @@
 # author    hancq
 # date      2016-10-18
 QT += widgets
+QT       += serialport
 TARGET = QImageViewer
 
 SOURCES += \

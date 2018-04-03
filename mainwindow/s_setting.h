@@ -8,9 +8,13 @@
 #include <QLabel>
 #include <QTextEdit>
 
+#include "serial.h"
+
 #define SSETTING_WIDGET_WIDTH     340
 #define SSETTING_WIDGET_HEIGHT    200
 
+extern char spdid;
+extern char gapid;
 class S_setting : public QWidget
 {
     Q_OBJECT
@@ -38,6 +42,7 @@ private:
     QLabel *gpNar;
     QLabel *gpMid;
     QLabel *gpWid;
+
 
     void scanUiComponent(void);
 
