@@ -25,17 +25,11 @@ S_setting::~S_setting()
     SAFE_FREE(sendBtn);
 }
 
-//extern QSerialPort sserial;
-//extern void initSerial(void);
-
 void S_setting::sendBtnClicked(void)
 {
     //TBD
-    serial::initSerial();
-
-    //serial::sserial->write(&spdid);
-    qDebug("speed: %d", spdid);
-    qDebug("gap: %d", gapid);
+    serial mySerial;
+    mySerial.sendSerial();
 
     this->close();
 }

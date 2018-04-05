@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QTime>
 #include <QWidget>
+#include <QMessageBox>
 
 
 class serial : public QWidget
@@ -14,7 +15,12 @@ public:
     explicit serial(QWidget *parent = 0);
     ~serial();
     QSerialPort *sserial;
-    static void initSerial(void);
+    void sendSerial(void);
+    static QByteArray QString2Hex(QString);
+    static char ConvertHexChar(char);
+private:
+    void initSerial(void);
+    QString dataBuf;
 
 };
 
