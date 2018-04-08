@@ -6,7 +6,7 @@
 #include <QRadioButton>
 #include <QButtonGroup>
 #include <QLabel>
-#include <QTextEdit>
+#include <QLineEdit>
 
 #include "serial.h"
 
@@ -35,14 +35,8 @@ private:
     QRadioButton *gap1;
     QRadioButton *gap2;
 
-    QLabel *spLow;
-    QLabel *spMid;
-    QLabel *spHgh;
-
-    QLabel *gpNar;
-    QLabel *gpMid;
-    QLabel *gpWid;
-
+    QLabel *serialPort;
+    QLineEdit *comPort;
 
     void scanUiComponent(void);
 

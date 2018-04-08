@@ -1,5 +1,6 @@
 #include "serial.h"
 #include <string>
+#include <QMessageBox>
 
 serial::serial(QWidget *parent) : QWidget(parent)
 {
@@ -14,21 +15,28 @@ serial::~serial()
 }
 
 
+extern QString portName;
 void serial::initSerial(void)
 {
-
     sserial = new QSerialPort;
-    sserial->setPortName("COM4");
-    sserial->open(QIODevice::ReadWrite);
-    sserial->setBaudRate(QSerialPort::Baud9600);
-    sserial->setDataBits(QSerialPort::Data8);
-    sserial->setParity(QSerialPort::NoParity);
-    sserial->setStopBits(QSerialPort::OneStop);
-    sserial->setFlowControl(QSerialPort::NoFlowControl);
-    sserial->setDataTerminalReady(true);        //DTR open
-    qDebug("initSerial");
-    sserial->setDataTerminalReady(false);       //DTR close
-
+    sserial->setPortName(portName);
+    if(sserial->open(QIODevice::WriteOnly))
+    {
+        sserial->setBaudRate(QSerialPort::Baud9600);
+        sserial->setDataBits(QSerialPort::Data8);
+        sserial->setParity(QSerialPort::NoParity);
+        sserial->setStopBits(QSerialPort::OneStop);
+        sserial->setFlowControl(QSerialPort::NoFlowControl);
+        sserial->setDataTerminalReady(true);        //DTR open
+        sserial->setDataTerminalReady(false);       //DTR close
+    }
+    else
+    {
+        QMessageBox::warning(NULL,
+                                 tr("Error"),
+                                 tr("Cannot Open Serial Port!"));
+        return ;
+     }
 }
 
 void serial::sendSerial()
@@ -47,10 +55,10 @@ void serial::sendSerial()
         break;
     }
     QByteArray sendData = QString2Hex(dataBuf);
-    qDebug()<<"sendData:"<<sendData;
+    //qDebug()<<"sendData:"<<sendData;
     sserial->write(sendData);
     sserial->waitForBytesWritten(1000);         //1s for writting bytes
-    qDebug()<<"sended!";
+    //qDebug()<<"sended!";
 
 }
 

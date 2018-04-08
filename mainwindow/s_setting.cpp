@@ -16,18 +16,20 @@ S_setting::S_setting(QWidget *parent) : QWidget(parent)
 
 S_setting::~S_setting()
 {
-    SAFE_FREE(spLow);
-    SAFE_FREE(spMid);
-    SAFE_FREE(spHgh);
-    SAFE_FREE(gpNar);
-    SAFE_FREE(gpMid);
-    SAFE_FREE(gpWid);
+    SAFE_FREE(sped0);
+    SAFE_FREE(sped1);
+    SAFE_FREE(sped2);
+    SAFE_FREE(gap0);
+    SAFE_FREE(gap1);
+    SAFE_FREE(gap1);
     SAFE_FREE(sendBtn);
 }
 
+QString portName;
 void S_setting::sendBtnClicked(void)
 {
     //TBD
+    portName = comPort->text();
     serial mySerial;
     mySerial.sendSerial();
 
@@ -38,6 +40,7 @@ void S_setting::scanUiComponent(void)
 {
 
     sped0 = new QRadioButton(tr("Low Speed "));
+    sped0->setChecked(true);
     sped1 = new QRadioButton(tr("Middle Speed"));
     sped2 = new QRadioButton(tr("High Speed"));
     spedGroup = new QButtonGroup(this);
@@ -46,6 +49,7 @@ void S_setting::scanUiComponent(void)
     spedGroup->addButton(sped2,2);
 
     gap0 = new QRadioButton(tr("Narow Gap "));
+    gap0->setChecked(true);
     gap1 = new QRadioButton(tr("Middle Gap  "));
     gap2 = new QRadioButton(tr("Wide Gap"));
     gapGroup = new QButtonGroup(this);
@@ -53,6 +57,10 @@ void S_setting::scanUiComponent(void)
     gapGroup->addButton(gap1,1);
     gapGroup->addButton(gap2,2);
 
+    serialPort = new QLabel(tr("Input Your Serial Port(exm.COM4):"));
+    comPort = new QLineEdit;
+    comPort->setMaximumWidth(60);
+    comPort->setText("COM4");
 
     QHBoxLayout *spdLayout = new QHBoxLayout;
     spdLayout->addWidget(sped0);
@@ -64,11 +72,19 @@ void S_setting::scanUiComponent(void)
     gapLayout->addWidget(gap1);
     gapLayout->addWidget(gap2);
 
+    QHBoxLayout *textLayout = new QHBoxLayout;
+    textLayout->addStretch();
+    textLayout->addWidget(serialPort);
+    textLayout->addWidget(comPort);
+    textLayout->addStretch();
+
     QVBoxLayout *mainLayout = new QVBoxLayout;
     mainLayout->addStretch(1);
     mainLayout->addLayout(spdLayout);
-    mainLayout->addStretch(2);
+    mainLayout->addStretch(1);
     mainLayout->addLayout(gapLayout);
+    mainLayout->addStretch(1);
+    mainLayout->addLayout(textLayout);
     mainLayout->addStretch(3);
 
     setLayout(mainLayout);
