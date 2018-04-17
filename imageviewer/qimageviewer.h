@@ -7,6 +7,10 @@
 #include <QDir>
 #include <QSize>
 #include <QFileInfo>
+#include <math.h>
+#include <complex>
+#include <stdio.h>
+#include <QVector>
 
 class QImageViewer : public QWidget
 {
@@ -51,6 +55,10 @@ private:
     int loadImageResource(const QString &caption,const QString &dir,const QString &filer);
 
     int upgradeFileInfo(QString &filename,int angle,int sizeScale);
+
+    void RD_algorithm(QVector <QVector<std::complex<double>>> &imgDataNew);
+
+    int nextpow2(int temp);
 
 public slots:
 };
