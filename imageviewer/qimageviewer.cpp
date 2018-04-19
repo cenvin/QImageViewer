@@ -116,80 +116,136 @@ int QImageViewer::loadImageResource(const QString &caption,
     return 0;
 }
 void QImageViewer::RD_algorithm(QVector <QVector<std::complex<double>>> &imgDataNew){
-    double pi = 3.141592;
-    double c = 300000000.0;
-    double fc = 3000000000.0;
-    double wc = 2*pi*fc;
-    double lamda = c/fc;
-    double Tr = 0.0000015;
-    double Br = 150000000.0;
-    double Kr = Br/Tr;
+    //double pi = 3.141592;
+    //double c = 300000000.0;
+    //double fc = 3000000000.0;
+    //double wc = 2*pi*fc;
+    //double lamda = c/fc;
+    //double Tr = 0.0000015;
+    //double Br = 150000000.0;
+    //double Kr = Br/Tr;
 
-    double H = 3000.0;
-    double ThetaCenter = 45.0/180*pi;
-    double Platform_center[3] = {0,0,H};
-    double Y_C = H*tan(ThetaCenter);
-    double Scene_center[3] = {0,Y_C,0};
-    double delta_X = 150.0;
-    double delta_Y = 100.0;
-    double Xmin = -delta_X / 2;
-    double Xmax = delta_X / 2;
-    double Ymin = -delta_Y / 2;
-    double Ymax = delta_Y / 2;
-    double RC0 = sqrt(pow(Scene_center[0]-Platform_center[0],2)+
-            pow(Scene_center[1]-Platform_center[1],2)+
-            pow(Scene_center[2]-Platform_center[2],2));
+    //double H = 3000.0;
+    //double ThetaCenter = 45.0/180*pi;
+    //double Platform_center[3] = {0,0,H};
+    //double Y_C = H*tan(ThetaCenter);
+    //double Scene_center[3] = {0,Y_C,0};
+    //double delta_X = 150.0;
+    //double delta_Y = 100.0;
+    //double Xmin = -delta_X / 2;
+    //double Xmax = delta_X / 2;
+    //double Ymin = -delta_Y / 2;
+    //double Ymax = delta_Y / 2;
+    //double RC0 = sqrt(pow(Scene_center[0]-Platform_center[0],2)+
+    //        pow(Scene_center[1]-Platform_center[1],2)+
+    //        pow(Scene_center[2]-Platform_center[2],2));
 
-    double rho_R = c/(2*Br);
-    double rch_Y = rho_R/sin(ThetaCenter);
-    double rho_AT = rho_R;
+    //double rho_R = c/(2*Br);
+    //double rch_Y = rho_R/sin(ThetaCenter);
+    //double rho_AT = rho_R;
 
-    double V = 150.0;
-    double D = 2*rho_AT;
-    double Lsar = lamda * RC0 / D;
-    double Tsar = Lsar / V;
+    //double V = 150.0;
+    //double D = 2*rho_AT;
+    //double Lsar = lamda * RC0 / D;
+    //double Tsar = Lsar / V;
 
-    double Rate_Fs = 1.2;
-    long int Fs = round(Rate_Fs * Br);
-    double Ts = 1.0 / Fs;
-    double delta_Rs = Ts * c;
-    double Rmin = sqrt(pow((Y_C + Ymin),2) + pow(H,2));
-    double Rmax = sqrt(pow((Y_C + Ymax),2) + pow((Lsar/2),2) + pow(H,2));
-    double Nfast = ceil((2 * (Rmax-Rmin) / c + Tr) / Ts);
-    int Nf = nextpow2(Nfast);
-    QVector<double> tf_org;
-    QVector<double> tf;
-    QVector<double> tr;
-    for(int i=0;i<Nf;i++){
-        tf_org.push_back((i - Nf/2) * Ts);
-        tf.push_back((2 * RC0 / c) + tf_org.at(i));
-        tr.push_back(tf.at(i) * c / 2);
+    //double Rate_Fs = 1.2;
+    //long int Fs = round(Rate_Fs * Br);
+    //double Ts = 1.0 / Fs;
+    //double delta_Rs = Ts * c;
+    //double Rmin = sqrt(pow((Y_C + Ymin),2) + pow(H,2));
+    //double Rmax = sqrt(pow((Y_C + Ymax),2) + pow((Lsar/2),2) + pow(H,2));
+    //double Nfast = ceil((2 * (Rmax-Rmin) / c + Tr) / Ts);
+    //int Nf = nextpow2(Nfast);
+    //QVector<double> tf_org;
+    //QVector<double> tf;
+    //QVector<double> tr;
+    //for(int i=0;i<Nf;i++){
+    //    tf_org.push_back((i - Nf/2) * Ts);
+    //    tf.push_back((2 * RC0 / c) + tf_org.at(i));
+    //    tr.push_back(tf.at(i) * c / 2);
+    //}
+    //double Ka = -2 * pow(V,2) / (lamda * RC0);
+    //double Ba = abs(Ka * Tsar);
+    //double Rate_PRF = 1.25;
+    //double PRF = round(Rate_PRF * Ba);
+    //double PRT = 1.0 / PRF;
+
+    //double Nslow = ceil((delta_X + Lsar) / V / PRT);
+    //double Ns  = nextpow2(Nslow);
+    //QVector<double> ts;
+    //QVector<double> ta;
+    //for(int i=0;i<Ns;i++){
+    //    ts.push_back((i - Ns/2) * PRT);
+    //    ta.push_back(ts.at(i) * V);
+    //}
+
+    //QVector<std::complex<double>> h_ref(520);
+    //for(int i=0;i<Nf;i++){
+    //    double rel = (cos(i * pi * Kr * pow(tf_org.at(i),2)) * (abs(tf_org.at(i)) <= Tr/2));
+    //    double img = (sin(i * pi * Kr * pow(tf_org.at(i),2)) * (abs(tf_org.at(i)) <= Tr/2));
+    //    h_ref[i] = std::complex<double> (rel , img);
+
+    //    double w = 0.54-0.46*cos(2.0*pi*i/(Nf-1));     //hamming window
+    //    h_ref[i] = h_ref.at(i) * w;
+    //    qDebug()<<i<<"h_ref="<<h_ref[i].real();
+    //}
+
+	
+	Engine *ep = engOpen("");
+	
+    if (!(ep)){
+        qDebug()<<"engine open failed!";
+        exit(1);
     }
-    double Ka = -2 * pow(V,2) / (lamda * RC0);
-    double Ba = abs(Ka * Tsar);
-    double Rate_PRF = 1.25;
-    double PRF = round(Rate_PRF * Ba);
-    double PRT = 1.0 / PRF;
 
-    double Nslow = ceil((delta_X + Lsar) / V / PRT);
-    double Ns  = nextpow2(Nslow);
-    QVector<double> ts;
-    QVector<double> ta;
-    for(int i=0;i<Ns;i++){
-        ts.push_back((i - Ns/2) * PRT);
-        ta.push_back(ts.at(i) * V);
-    }
+	engEvalString(ep, "cd D:\\Documents\\GitHub\\sar");
 
-    QVector<std::complex<double>> h_ref(520);
-    for(int i=0;i<Nf;i++){
-        double rel = (cos(i * pi * Kr * pow(tf_org.at(i),2)) * (abs(tf_org.at(i)) <= Tr/2));
-        double img = (sin(i * pi * Kr * pow(tf_org.at(i),2)) * (abs(tf_org.at(i)) <= Tr/2));
-        h_ref[i] = std::complex<double> (rel , img);
+	int M = imgDataNew.size();
+	int N = imgDataNew[0].size();
 
-        double w=0.54-0.46*cos(2.0*pi*i/(Nf-1));     //hamming window
-        h_ref[i] = h_ref.at(i) * w;
-        qDebug()<<i<<"h_ref="<<h_ref[i].real();
-    }
+	mxArray *rPart = mxCreateDoubleMatrix(N, M, mxREAL);
+	mxArray *iPart = mxCreateDoubleMatrix(N, M, mxREAL);
+	mxArray *rResult = mxCreateDoubleMatrix(M, N, mxREAL);
+
+	double rData[512][512], iData[512][512], result[512][512];
+
+	for (int i = 0; i < M; i++) {
+		for (int j = 0; j < N; j++) {
+			rData[i][j] = imgDataNew[i][j].real();
+			iData[i][j] = imgDataNew[i][j].imag();
+		}
+	}
+
+	memcpy((void *)mxGetPr(rPart), (void *)rData, sizeof(double) * M * N);
+	memcpy((void *)mxGetPr(iPart), (void *)iData, sizeof(double) * M * N);
+
+	engPutVariable(ep, "rPart", rPart);
+	engPutVariable(ep, "iPart", iPart);
+
+	engEvalString(ep, "Echo_data = complex(rPart ,iPart);");
+	engEvalString(ep, "Echo_data = Echo_data';");
+
+	//engEvalString(ep, "csvwrite('radar_c.csv', Echo_data);");
+
+	engEvalString(ep, "radarimaging");
+
+	rResult = engGetVariable(ep, "G");
+	memcpy((void *)result, (void *)mxGetPr(rResult), sizeof(double) * M * N);
+
+	for (int i = 0; i < M; i++) {
+		for (int j = 0; j < N; j++) {
+			imgDataNew[M - i -1][j] = result[i][j];
+		}
+	}
+
+	mxDestroyArray(rPart);
+	mxDestroyArray(iPart);
+	mxDestroyArray(rResult);
+
+	engClose(ep);
+
+	return;
 
 }
 
@@ -226,9 +282,9 @@ int QImageViewer::upgradeFileInfo(QString &filename,int angle,int sizeScale)
     int imgWidth = tempOption.at(1).split(",").count();
 
     //std::complex<double> imgDataNew[520][520];
-    QVector <QVector<std::complex<double>>> imgDataNew(520);
+    QVector <QVector<std::complex<double>>> imgDataNew(512);
     for (int i = 0 ; i<imgDataNew.size() ; i++)
-        imgDataNew[i].resize(520);
+        imgDataNew[i].resize(512);
 
     //bool ok;
 
@@ -236,10 +292,7 @@ int QImageViewer::upgradeFileInfo(QString &filename,int angle,int sizeScale)
     {
          QStringList tempbar = tempOption.at(i).split(",");
          for(int j = 0 ; j < imgWidth ; j++)
-         {             
-             //imgDataNew[i][j] = tempbar[j].toInt(&ok, 10);
-             //std::complex<double> temp;
-             //QString str = "1.12566+2.52551i";
+         {   
              int plus = tempbar[j].indexOf('+');
              int minus = tempbar[j].indexOf('-',2);
              int conj = tempbar[j].indexOf('i');
@@ -271,13 +324,11 @@ int QImageViewer::upgradeFileInfo(QString &filename,int angle,int sizeScale)
                     }
              }
 
-             imgDataNew[i][j] = std::complex<double>(rel , img);
-             //qDebug()<<"("<<i<<","<<j<<")="<<imgDataNew[i][j].real()<<"+i*"<<imgDataNew[i][j].imag();
+             imgDataNew[i][j] = std::complex<double>(rel , -img);
          }
     }
     file.close();
 
-    //qDebug()<<imgDataNew[331][130].real();
     RD_algorithm(imgDataNew);
 
     desImage = QImage(imgWidth,imgHeight,QImage::Format_RGB32); //RGB32
@@ -292,8 +343,7 @@ int QImageViewer::upgradeFileInfo(QString &filename,int angle,int sizeScale)
     {
         for (int j=0;j<imgWidth;j++)
         {
-            //b = (int)*(imgDataNew+i*imgWidth+j);
-            b = imgDataNew[i][j].real()*255;
+            b = 255 - imgDataNew[i][j].real();
             g = b;
             r = g;
             desImage.setPixel(j,i,qRgb(r,g,b));

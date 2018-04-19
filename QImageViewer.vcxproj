@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D5148CA7-AB30-358F-BE16-998D08D339B4}</ProjectGuid>
+    <RootNamespace>QImageViewer</RootNamespace>
+    <Keyword>Qt4VSv1.0</Keyword>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <OutputDirectory>release\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>release\</IntermediateDirectory>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <OutputDirectory>release\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>release\</IntermediateDirectory>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <OutputDirectory>debug\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>debug\</IntermediateDirectory>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <OutputDirectory>debug\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>debug\</IntermediateDirectory>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Condition="'$(QtMsBuild)'=='' or !Exists('$(QtMsBuild)\qt.targets')">
+    <QtMsBuild>$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
+    <Import Project="$(QtMsBuild)\qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\</IntDir>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</IgnoreImportLibrary>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\</IntDir>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</IgnoreImportLibrary>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <IncludePath>D:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\include;D:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\include\win64;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64;D:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;mainwindow;imageviewer;"..\..\..\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\include";"..\..\..\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\include\win64";..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include\QtWidgets;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include\QtGui;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include\QtANGLE;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include\QtSerialPort;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include\QtCore;release;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\mkspecs\win32-msvc2015;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-FS -Zc:strictStrings -Zc:throwingNew -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>release\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DisableSpecificWarnings>4577;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;QT_SERIALPORT_LIB;QT_CORE_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>D:\QT\QT5.6.0\5.6\MSVC2015_64\lib\qtmain.lib;shell32.lib;"D:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libeng.lib";"D:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libmat.lib";"D:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libmx.lib";"D:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libmex.lib";D:\QT\QT5.6.0\5.6\MSVC2015_64\lib\Qt5Widgets.lib;D:\QT\QT5.6.0\5.6\MSVC2015_64\lib\Qt5Gui.lib;D:\QT\QT5.6.0\5.6\MSVC2015_64\lib\Qt5SerialPort.lib;D:\QT\QT5.6.0\5.6\MSVC2015_64\lib\Qt5Core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\QT\QT5.6.0\5.6\MSVC2015_64\lib;C:\utils\postgresql\pgsql\lib;C:\utils\my_sql\my_sql\lib;$(QTDIR)\lib;"D:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft";%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkIncremental>false</LinkIncremental>
+      <OutputFile>$(OutDir)\QImageViewer.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;QT_SERIALPORT_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <QtMoc>
+      <QTDIR>D:\QT\QT5.6.0\5.6\MSVC2015_64</QTDIR>
+      <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
+      <Define>_WINDOWS;UNICODE;WIN32;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;QT_SERIALPORT_LIB;QT_CORE_LIB;NDEBUG;%(PreprocessorDefinitions)</Define>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <InputFile>%(FullPath)</InputFile>
+      <DynamicSource>output</DynamicSource>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;D:/QT/QT5.6.0/5.6/MSVC2015_64/mkspecs/$(Platform)-msvc2015;.;./mainwindow;./imageviewer;D:/Program Files/MATLAB/MATLAB Production Server/R2015a/extern/include;D:/Program Files/MATLAB/MATLAB Production Server/R2015a/extern/include/win64;D:/QT/QT5.6.0/5.6/MSVC2015_64/include;D:/QT/QT5.6.0/5.6/MSVC2015_64/include/QtWidgets;D:/QT/QT5.6.0/5.6/MSVC2015_64/include/QtGui;D:/QT/QT5.6.0/5.6/MSVC2015_64/include/QtANGLE;D:/QT/QT5.6.0/5.6/MSVC2015_64/include/QtSerialPort;D:/QT/QT5.6.0/5.6/MSVC2015_64/include/QtCore</IncludePath>
+    </QtMoc>
+    <QtRcc>
+      <InitFuncName>images</InitFuncName>
+      <OutputFile>.\GeneratedFiles\qrc_%(Filename).cpp</OutputFile>
+      <QTDIR>D:\QT\QT5.6.0\5.6\MSVC2015_64</QTDIR>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+      <Compression>default</Compression>
+      <InputFile>%(FullPath)</InputFile>
+    </QtRcc>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;mainwindow;imageviewer;"..\..\..\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\include";"..\..\..\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\include\win64";..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include\QtWidgets;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include\QtGui;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include\QtANGLE;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include\QtSerialPort;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include\QtCore;release;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\mkspecs\win32-msvc2015;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-FS -Zc:strictStrings -Zc:throwingNew -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>release\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DisableSpecificWarnings>4577;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;QT_SERIALPORT_LIB;QT_CORE_LIB;NDEBUG;WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>D:\QT\QT5.6.0\5.6\MSVC2015_64\lib\qtmain.lib;shell32.lib;"D:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libeng.lib";"D:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libmat.lib";"D:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libmx.lib";"D:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libmex.lib";D:\QT\QT5.6.0\5.6\MSVC2015_64\lib\Qt5Widgets.lib;D:\QT\QT5.6.0\5.6\MSVC2015_64\lib\Qt5Gui.lib;D:\QT\QT5.6.0\5.6\MSVC2015_64\lib\Qt5SerialPort.lib;D:\QT\QT5.6.0\5.6\MSVC2015_64\lib\Qt5Core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\QT\QT5.6.0\5.6\MSVC2015_64\lib;C:\utils\postgresql\pgsql\lib;C:\utils\my_sql\my_sql\lib;$(QTDIR)\lib;"D:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft";%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type=%27win32%27 name=%27Microsoft.Windows.Common-Controls%27 version=%276.0.0.0%27 publicKeyToken=%276595b64144ccf1df%27 language=%27*%27 processorArchitecture=%27*%27"  /SUBSYSTEM:WINDOWS %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkIncremental>false</LinkIncremental>
+      <OutputFile>$(OutDir)\QImageViewer.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;QT_SERIALPORT_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <QtMoc>
+      <QTDIR>D:\QT\QT5.6.0\5.6\MSVC2015_64</QTDIR>
+      <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
+      <Define>_WINDOWS;UNICODE;WIN32;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;QT_SERIALPORT_LIB;QT_CORE_LIB;NDEBUG;WIN64;%(PreprocessorDefinitions)</Define>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <InputFile>%(FullPath)</InputFile>
+      <DynamicSource>output</DynamicSource>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;D:/QT/QT5.6.0/5.6/MSVC2015_64/mkspecs/$(Platform)-msvc2015;.;./mainwindow;./imageviewer;D:/Program Files/MATLAB/MATLAB Production Server/R2015a/extern/include;D:/Program Files/MATLAB/MATLAB Production Server/R2015a/extern/include/win64;D:/QT/QT5.6.0/5.6/MSVC2015_64/include;D:/QT/QT5.6.0/5.6/MSVC2015_64/include/QtWidgets;D:/QT/QT5.6.0/5.6/MSVC2015_64/include/QtGui;D:/QT/QT5.6.0/5.6/MSVC2015_64/include/QtANGLE;D:/QT/QT5.6.0/5.6/MSVC2015_64/include/QtSerialPort;D:/QT/QT5.6.0/5.6/MSVC2015_64/include/QtCore</IncludePath>
+    </QtMoc>
+    <QtRcc>
+      <InitFuncName>images</InitFuncName>
+      <OutputFile>.\GeneratedFiles\qrc_%(Filename).cpp</OutputFile>
+      <QTDIR>D:\QT\QT5.6.0\5.6\MSVC2015_64</QTDIR>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+      <Compression>default</Compression>
+      <InputFile>%(FullPath)</InputFile>
+    </QtRcc>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;mainwindow;imageviewer;"..\..\..\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\include";"..\..\..\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\include\win64";..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include\QtWidgets;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include\QtGui;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include\QtANGLE;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include\QtSerialPort;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include\QtCore;debug;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\mkspecs\win32-msvc2015;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-FS -Zc:strictStrings -Zc:throwingNew -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>debug\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QT_WIDGETS_LIB;QT_GUI_LIB;QT_SERIALPORT_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>D:\QT\QT5.6.0\5.6\MSVC2015_64\lib\qtmaind.lib;shell32.lib;"D:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libeng.lib";"D:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libmat.lib";"D:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libmx.lib";"D:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libmex.lib";D:\QT\QT5.6.0\5.6\MSVC2015_64\lib\Qt5Widgetsd.lib;D:\QT\QT5.6.0\5.6\MSVC2015_64\lib\Qt5Guid.lib;D:\QT\QT5.6.0\5.6\MSVC2015_64\lib\Qt5SerialPortd.lib;D:\QT\QT5.6.0\5.6\MSVC2015_64\lib\Qt5Cored.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\QT\QT5.6.0\5.6\MSVC2015_64\lib;C:\utils\postgresql\pgsql\lib;C:\utils\my_sql\my_sql\lib;$(QTDIR)\lib;"D:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft";%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <OutputFile>$(OutDir)\QImageViewer.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QT_WIDGETS_LIB;QT_GUI_LIB;QT_SERIALPORT_LIB;QT_CORE_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <QtRcc>
+      <QTDIR>D:\QT\QT5.6.0\5.6\MSVC2015_64</QTDIR>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+      <Compression>default</Compression>
+      <InitFuncName>images</InitFuncName>
+      <OutputFile>.\GeneratedFiles\qrc_%(Filename).cpp</OutputFile>
+      <InputFile>%(FullPath)</InputFile>
+    </QtRcc>
+    <QtMoc>
+      <QTDIR>D:\QT\QT5.6.0\5.6\MSVC2015_64</QTDIR>
+      <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
+      <Define>_WINDOWS;UNICODE;WIN32;QT_WIDGETS_LIB;QT_GUI_LIB;QT_SERIALPORT_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</Define>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <InputFile>%(FullPath)</InputFile>
+      <DynamicSource>output</DynamicSource>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;D:/QT/QT5.6.0/5.6/MSVC2015_64/mkspecs/$(Platform)-msvc2015;.;./mainwindow;./imageviewer;D:/Program Files/MATLAB/MATLAB Production Server/R2015a/extern/include;D:/Program Files/MATLAB/MATLAB Production Server/R2015a/extern/include/win64;D:/QT/QT5.6.0/5.6/MSVC2015_64/include;D:/QT/QT5.6.0/5.6/MSVC2015_64/include/QtWidgets;D:/QT/QT5.6.0/5.6/MSVC2015_64/include/QtGui;D:/QT/QT5.6.0/5.6/MSVC2015_64/include/QtANGLE;D:/QT/QT5.6.0/5.6/MSVC2015_64/include/QtSerialPort;D:/QT/QT5.6.0/5.6/MSVC2015_64/include/QtCore</IncludePath>
+    </QtMoc>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;mainwindow;imageviewer;"..\..\..\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\include";"..\..\..\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\include\win64";..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include\QtWidgets;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include\QtGui;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include\QtANGLE;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include\QtSerialPort;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\include\QtCore;debug;..\..\..\QT\QT5.6.0\5.6\MSVC2015_64\mkspecs\win32-msvc2015;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-FS -Zc:strictStrings -Zc:throwingNew -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>debug\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QT_WIDGETS_LIB;QT_GUI_LIB;QT_SERIALPORT_LIB;QT_CORE_LIB;WIN64;Console;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>D:\QT\QT5.6.0\5.6\MSVC2015_64\lib\qtmaind.lib;shell32.lib;libeng.lib;libmat.lib;libmx.lib;libmex.lib;D:\QT\QT5.6.0\5.6\MSVC2015_64\lib\Qt5Widgetsd.lib;D:\QT\QT5.6.0\5.6\MSVC2015_64\lib\Qt5Guid.lib;D:\QT\QT5.6.0\5.6\MSVC2015_64\lib\Qt5SerialPortd.lib;D:\QT\QT5.6.0\5.6\MSVC2015_64\lib\Qt5Cored.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\Program Files\MATLAB\MATLAB Production Server\R2015a\bin\win64;D:\QT\QT5.6.0\5.6\MSVC2015_64\lib;C:\utils\postgresql\pgsql\lib;C:\utils\my_sql\my_sql\lib;$(QTDIR)\lib;D:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type=%27win32%27 name=%27Microsoft.Windows.Common-Controls%27 version=%276.0.0.0%27 publicKeyToken=%276595b64144ccf1df%27 language=%27*%27 processorArchitecture=%27*%27"  /SUBSYSTEM:WINDOWS %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <OutputFile>$(OutDir)\QImageViewer.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetMachine>MachineX64</TargetMachine>
+      <StackReserveSize>100000000</StackReserveSize>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QT_WIDGETS_LIB;QT_GUI_LIB;QT_SERIALPORT_LIB;QT_CORE_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <QtRcc>
+      <QTDIR>D:\QT\QT5.6.0\5.6\MSVC2015_64</QTDIR>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+      <Compression>default</Compression>
+      <InitFuncName>images</InitFuncName>
+      <OutputFile>.\GeneratedFiles\qrc_%(Filename).cpp</OutputFile>
+      <InputFile>%(FullPath)</InputFile>
+    </QtRcc>
+    <QtMoc>
+      <QTDIR>D:\QT\QT5.6.0\5.6\MSVC2015_64</QTDIR>
+      <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
+      <Define>_WINDOWS;UNICODE;WIN32;QT_WIDGETS_LIB;QT_GUI_LIB;QT_SERIALPORT_LIB;QT_CORE_LIB;WIN64;Console;%(PreprocessorDefinitions)</Define>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <InputFile>%(FullPath)</InputFile>
+      <DynamicSource>output</DynamicSource>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;D:/QT/QT5.6.0/5.6/MSVC2015_64/mkspecs/$(Platform)-msvc2015;.;./mainwindow;./imageviewer;D:/Program Files/MATLAB/MATLAB Production Server/R2015a/extern/include;D:/Program Files/MATLAB/MATLAB Production Server/R2015a/extern/include/win64;D:/QT/QT5.6.0/5.6/MSVC2015_64/include;D:/QT/QT5.6.0/5.6/MSVC2015_64/include/QtWidgets;D:/QT/QT5.6.0/5.6/MSVC2015_64/include/QtGui;D:/QT/QT5.6.0/5.6/MSVC2015_64/include/QtANGLE;D:/QT/QT5.6.0/5.6/MSVC2015_64/include/QtSerialPort;D:/QT/QT5.6.0/5.6/MSVC2015_64/include/QtCore</IncludePath>
+    </QtMoc>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mainwindow\mainwindow.cpp" />
+    <ClCompile Include="mainwindow\qabout.cpp" />
+    <ClCompile Include="imageviewer\qimageviewer.cpp" />
+    <ClCompile Include="mainwindow\s_setting.cpp" />
+    <ClCompile Include="mainwindow\serial.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="mainwindow\mainwindow.h">
+    </QtMoc>
+    <QtMoc Include="mainwindow\qabout.h">
+    </QtMoc>
+    <QtMoc Include="imageviewer\qimageviewer.h">
+    </QtMoc>
+    <QtMoc Include="mainwindow\s_setting.h">
+    </QtMoc>
+    <QtMoc Include="mainwindow\serial.h">
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\Qt.png" />
+    <None Include="images\add.png" />
+    <None Include="images\clear.png" />
+    <None Include="images\close.png" />
+    <None Include="images\help.png" />
+    <QtRcc Include="images.qrc">
+    </QtRcc>
+    <None Include="images\large.png" />
+    <None Include="images\left.png" />
+    <None Include="images\logo.png" />
+    <None Include="images\mesage.png" />
+    <None Include="images\open.png" />
+    <None Include="images\quit.png" />
+    <None Include="images\right.png" />
+    <None Include="images\save.png" />
+    <None Include="images\select.png" />
+    <None Include="images\setting.png" />
+    <None Include="images\small.png" />
+    <None Include="images\stop.png" />
+    <None Include="images\toLeft.png" />
+    <None Include="images\toRight.png" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" Qt5Version_x0020_x64="msvc2015_64" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

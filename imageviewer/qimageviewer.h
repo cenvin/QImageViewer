@@ -11,6 +11,8 @@
 #include <complex>
 #include <stdio.h>
 #include <QVector>
+#include <engine.h>
+#include "mex.h"
 
 class QImageViewer : public QWidget
 {
